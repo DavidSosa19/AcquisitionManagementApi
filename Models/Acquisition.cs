@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace AcquisitionManagementAPI.Models;
 
@@ -9,9 +10,9 @@ public partial class Acquisition
 
     public decimal Presupuesto { get; set; }
 
-    public string Unidad { get; set; } = null!;
+    public int Unidad { get; set; }
 
-    public string TipoBienServicio { get; set; } = null!;
+    public int TipoBienServicio { get; set; }
 
     public decimal Cantidad { get; set; }
 
@@ -21,11 +22,20 @@ public partial class Acquisition
 
     public DateOnly FechaAdquisicion { get; set; }
 
-    public string Proveedor { get; set; } = null!;
+    public int Proveedor { get; set; }
 
     public List<string> Documentacion { get; set; } = null!;
 
     public DateTime CreatedAt { get; set; }
 
     public DateTime? UpdatedAt { get; set; }
+
+    [JsonIgnore]
+    public virtual Provider? ProveedorNavigation { get; set; } = null!;
+
+    [JsonIgnore]
+    public virtual AssetServiceType? TipoBienServicioNavigation { get; set; } = null!;
+
+    [JsonIgnore]
+    public virtual Unit? UnidadNavigation { get; set; } = null!;
 }

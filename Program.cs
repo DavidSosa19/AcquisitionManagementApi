@@ -15,6 +15,9 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IAcquisitionService, AcquisitionService>();
+builder.Services.AddScoped<IProviderService, ProviderService>();
+builder.Services.AddScoped<IUnityService, UnityService>();
+builder.Services.AddScoped<IAssetTypeService, AssetTypeService>();
 
 var app = builder.Build();
 
