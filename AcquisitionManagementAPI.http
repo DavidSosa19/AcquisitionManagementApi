@@ -1,0 +1,6 @@
+@AcquisitionManagementAPI_HostAddress = http://localhost:5149
+
+GET {{AcquisitionManagementAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
