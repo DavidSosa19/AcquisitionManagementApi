@@ -27,19 +27,7 @@ Modify the `appsettings.json` file to include the correct database connection st
 Replace `dbname`, `username`, and `password` with the actual credentials of your PostgreSQL database.
 
 ### Automatic Database Generation
-If the connection string is properly configured, the application will **automatically generate the database** upon startup using `EnsureCreated()`. If you need to apply migrations manually, run:
-
-```sh
-dotnet ef database update
-```
-
-## Running the API
-To start the API, navigate to the project folder and run:
-
-```sh
-dotnet run
-```
-
+If the connection string is properly configured, the application will **automatically generate the database** upon startup using `EnsureCreated()`. If you need to apply migrations manually, 
 The API should now be accessible at `https://localhost:44363`.
 
 ## Testing the API
