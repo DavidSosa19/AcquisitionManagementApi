@@ -106,8 +106,7 @@ public partial class AcquisitiondbContext : DbContext
             entity.HasIndex(e => e.Nombre, "unidad_nombre_key").IsUnique();
 
             entity.Property(e => e.Id)
-                .HasDefaultValueSql("nextval('unidad_id_seq'::regclass)")
-                .HasColumnName("id");
+                .UseIdentityColumn();
             entity.Property(e => e.Nombre)
                 .HasMaxLength(50)
                 .HasColumnName("nombre");
