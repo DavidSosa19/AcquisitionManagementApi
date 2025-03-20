@@ -16,9 +16,12 @@ namespace AcquisitionManagementAPI.Controllers
             _acquisitionService = acquisitionService;
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Acquisition>>> GetAcquisitions()
+        public async Task<ActionResult<IEnumerable<Acquisition>>> GetAcquisitions(
+            [FromQuery] int? providerId,
+            [FromQuery] int? unitId,
+            [FromQuery] int? assetServiceTypeId)
         {
-            var acquisitions = await _acquisitionService.GetAcquisitions();
+            var acquisitions = await _acquisitionService.GetAcquisitions(providerId, unitId, assetServiceTypeId);
             return Ok(acquisitions);
         }
 

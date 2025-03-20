@@ -13,9 +13,26 @@ namespace AcquisitionManagementAPI.Services
         {
             _context = context;
         }
-        public async Task<IEnumerable<Acquisition>> GetAcquisitions()
+        public async Task<IEnumerable<Acquisition>> GetAcquisitions(int? providerId = null, int? unitId = null, int? assetTypeServiceId = null)
         {
-            return await _context.Acquisitions.ToListAsync();
+            var query = _context.Acquisitions.AsQueryable();
+
+            if (providerId.HasValue)
+            {
+                query = query.Where(a => a.Proveedor == providerId.Value);
+            }
+
+            if (unitId.HasValue)
+            {
+                query = query.Where(a => a.Unidad == unitId.Value);
+            }
+
+            if (assetTypeServiceId.HasValue)
+            {
+                query = query.Where(a => a.TipoBienServicio == assetTypeServiceId.Value);
+            }
+
+            return await query.ToListAsync(); 
         }
         public async Task<Acquisition?> GetAcquisitionByID(int id)
         {
